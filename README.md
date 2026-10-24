@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI-Based Source Code Plagiarism Detection Tool
 
 Compiler Construction practical project using:
@@ -69,3 +70,6 @@ Source Code
 ## 7. Notes
 
 The detector is a heuristic screening tool, not a measured accuracy system. Validate against a labeled set of similar and unrelated programs before using scores for consequential decisions.
+=======
+# AI-Code-Plagiarism-Detector
+>>>>>>> a83cdcf60ca34309429ae6e6326c49f01251f530
