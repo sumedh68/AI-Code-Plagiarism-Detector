@@ -1,0 +1,6 @@
+Flask>=3.0
+numpy>=1.26
+scikit-learn>=1.4
+tree-sitter>=0.22
+tree-sitter-cpp>=0.22
+reportlab>=4.0

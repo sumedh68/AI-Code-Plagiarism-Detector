@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Code Plagiarism Detector</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>AI-Based Source Code Plagiarism Detector</h1>
+
+    <p class="subtitle">
+        Fast C/C++ source code similarity analysis
+    </p>
+
+    <p class="review-note intro-note">
+        Similarity scores help identify code worth reviewing. They are not proof of plagiarism or a measured model accuracy.
+    </p>
+
+
+    <div class="grid">
+
+        <!-- STUDENT 1 -->
+
+        <div class="card">
+
+            <h2>Student 1</h2>
+
+            <input
+                type="file"
+                id="file1"
+                accept=".c,.cpp,.h,.hpp,.txt"
+            >
+
+            <textarea
+                id="code1"
+                placeholder="Paste Student 1 C/C++ code here..."
+            ></textarea>
+
+        </div>
+
+
+        <!-- STUDENT 2 -->
+
+        <div class="card">
+
+            <h2>Student 2</h2>
+
+            <input
+                type="file"
+                id="file2"
+                accept=".c,.cpp,.h,.hpp,.txt"
+            >
+
+            <textarea
+                id="code2"
+                placeholder="Paste Student 2 C/C++ code here..."
+            ></textarea>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        id="analyzeBtn">
+
+        Analyze Similarity
+
+    </button>
+
+
+    <span id="status"></span>
+
+
+    <!-- RESULT -->
+
+    <div
+        id="result"
+        class="card hidden">
+
+        <h2>Analysis Result</h2>
+
+
+        <div class="scores">
+
+            <div>
+                <b id="overall">0%</b>
+                <span>Overall</span>
+            </div>
+
+            <div>
+                <b id="dissimilarity">0%</b>
+                <span>Dissimilarity</span>
+            </div>
+
+            <div>
+                <b id="token">0%</b>
+                <span>Token</span>
+            </div>
+
+            <div>
+                <b id="ast">0%</b>
+                <span>AST</span>
+            </div>
+
+            <div>
+                <b id="semantic">0%</b>
+                <span>Semantic</span>
+            </div>
+
+        </div>
+
+
+        <h3>
+            Review priority:
+            <span id="risk">
+                -
+            </span>
+        </h3>
+
+        <p id="interpretation" class="review-note"></p>
+        <p class="metric-note">
+            Overall score weights: token 20%, structure 40%, semantic-style 40%. High priority starts at 70%; medium starts at 30%. These thresholds are heuristic, not validated accuracy.
+        </p>
+
+
+        <button
+            type="button"
+            id="pdfBtn">
+
+            Generate PDF Report
+
+        </button>
+
+
+        <h3>
+            Matching Lines
+        </h3>
+
+
+        <table id="matches">
+
+            <tr>
+                <th>Code 1</th>
+                <th>Code 2</th>
+                <th>Similarity</th>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <section class="card multi-upload">
+        <h2>Compare multiple files</h2>
+        <p class="multi-description">
+            Select at least two source files. You can select a batch at once or choose files in separate rounds. A single file cannot produce a similarity comparison.
+        </p>
+        <input
+            type="file"
+            id="multipleFiles"
+            accept=".c,.cpp,.h,.hpp,.txt"
+            multiple
+        >
+        <p id="selectedFiles" class="file-selection" aria-live="polite">No files selected.</p>
+        <button type="button" id="clearFilesBtn" class="secondary-button" disabled>Clear selected files</button>
+        <button type="button" id="compareMultipleBtn">Analyze Selected Files</button>
+        <p id="multiStatus" class="status-message" aria-live="polite"></p>
+        <div id="multiResult" class="hidden">
+            <p class="metric-note">
+                Overall similarity is a heuristic review signal, not proof of plagiarism or a measured accuracy. High priority starts at 70%; medium starts at 30%. The matrix diagonal is the same file.
+            </p>
+            <h3>Pair-by-pair results</h3>
+            <div class="table-wrap">
+                <table id="pairResults"></table>
+            </div>
+            <h3 class="matrix-heading">Similarity matrix</h3>
+            <div class="table-wrap">
+                <table id="similarityMatrix"></table>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+</body>
+
+</html>
