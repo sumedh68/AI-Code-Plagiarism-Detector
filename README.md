@@ -55,21 +55,4 @@ Token features down-weight boilerplate and generic identifiers while retaining o
 
 The displayed LOW/MEDIUM/HIGH labels are project heuristics. A similarity score is a review signal, not proof of plagiarism.
 
-## 6. Practical viva
 
-Pipeline:
-
-Source Code
--> Lexical Analysis
--> Weighted AST Features
--> IDF-Weighted Tokens
--> Informative Token N-Grams
--> Weighted Final Score
--> Report
-
-## 7. Notes
-
-The detector is a heuristic screening tool, not a measured accuracy system. Validate against a labeled set of similar and unrelated programs before using scores for consequential decisions.
-=======
-# AI-Code-Plagiarism-Detector
->>>>>>> a83cdcf60ca34309429ae6e6326c49f01251f530
